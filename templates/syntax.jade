@@ -1,0 +1,64 @@
+
+mixin bzb(bzCode)
+	code.language-bzb #{utils.removeIndent(bzCode)}
+
+mixin js(jsCode)
+	code.language-js #{utils.removeIndent(jsCode)}
+
+extends ./layout
+
+block content
+	#docs
+		h1 Syntax
+
+		table
+			tr
+				th JS
+				th Bizubee
+			tr
+
+			tr
+				td #[+js("a && b")]
+				td #[+bzb("a and b")]
+			tr
+				td #[+js("a || b")]
+				td #[+bzb("a or b")]
+			tr
+				td #[+js("!(a && b)")]
+				td #[+bzb("not a and b")]
+			tr
+				td #[+js("!a || !b")]
+				td #[+bzb("!a or !b")]
+			tr
+				td #[+js("a < b && b < c")]
+				td #[+bzb("a < b < c")]
+			tr
+				td #[+js("a === b")]
+				td #[+bzb("a == b")]
+			tr
+				td #[+js("a == b")]
+				td no equivalent
+			tr
+				td #[+js("a == null")]
+				td #[+bzb("a?")]
+			tr
+				td #[+js("(a == undefined)? undefined : a.b.c")]
+				td #[+bzb("a?.b.c")]
+			tr
+				td #[+js("(func == undefined)? undefined : func()")]
+				td #[+bzb("func?()")]
+			tr
+				td #[+js("Math.pow(a, b)")]
+				td #[+bzb("a ^ b")]
+			tr
+				td #[+js("Math.floor(a / b)")]
+				td #[+bzb("a // b")]
+			tr
+				td #[+js("return a")]
+				td #[+bzb("return a")], #[+bzb("|< a")] or #[+bzb("a >|")]
+			tr
+				td #[+js("yield a")]
+				td #[+bzb("yield a")], #[+bzb("<< a")] or #[+bzb("a >>")]
+			tr
+				td #[+js("yield* a")]
+				td #[+bzb("yield * a")], #[+bzb("<< * a")] or #[+bzb("a * >>")]

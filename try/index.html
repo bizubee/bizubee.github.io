@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Bizubee Inspector</title>
+        <script src="rollup.browser.js"></script>
+        <script src="cookies.js"></script>
+        <script src="cm/lib/codemirror.js"></script>
+        <script src="cm/mode/javascript/javascript.js"></script>
+        <script src="bizubee-mode.js"></script>
+        <script src="main.out.js"></script>
+        <link rel="stylesheet" href="cm/lib/codemirror.css" />
+        <link rel="stylesheet" href="cm/theme/elegant.css" />
+        <link rel="stylesheet" href="../css/bizubee-theme.css" />
+
+    	<style type="text/css" media="screen">
+    	
+			html, body {
+				width: 100%;
+				height: 100%;
+			}
+
+			html * {
+				margin: 0px;
+				padding: 0px;
+				border: none;
+			}
+
+			body {
+				overflow: hidden;
+			}
+			
+			#bz-editor, #js-editor {
+				position: relative;
+				height: 100%;
+				display: inline-block;
+				width: 49%;
+			}
+
+			#actions {
+				list-style-type: none;
+				right: 0px;
+				top: 0px;
+				z-index: 18;
+				position: absolute;
+			}
+
+			#actions li {
+				margin: 10px;
+				z-index: 20;
+			}
+
+			#actions li input {
+				width: 50px;
+				height: 50px;
+				text-align: center;
+				border-radius: 25px;
+				color: black;
+				background-color: white;
+				cursor: pointer;
+				z-index: 100;
+				font-size: 20pt;
+				box-shadow: -1px 1px .5em black;
+			}
+
+			#content {
+				height: calc(100% - 100px);
+			}
+
+			#navbar {
+				height: 120px;
+				padding: 5px;
+				background-color: black;
+			}
+
+			#logo-container {
+				display: block;
+				height: 80px;
+				width: 80px;
+				padding: 5px;
+				margin: 15px;
+				border: none;
+				border-radius: 45px;
+				background-color: white;
+			}
+
+			#logo-container img {
+				position: relative;
+				left: 4px;
+				display: block;
+				margin-left: auto;
+				margin-right: auto;
+				height: 100%;
+			}
+
+			.CodeMirror {
+				height: 100%;
+			}
+
+
+		</style>
+	</head>
+	<body>
+		<div id="navbar">
+			<a href="../" id="logo-container">
+				<img src="../assets/logo-tight.png" />
+			</a>
+		</div>
+		<div id="content">
+			<div id="bz-editor">
+				<ul id="actions">
+					<li><input type="button" bind-to="run" value="&#9658;" /></li>
+				</ul>
+			</div>
+			<div id="js-editor">
+			</div>
+		</div>
+	</body>
+</html>

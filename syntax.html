@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Bizubee</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="assets/prism.css">
+  </head>
+  <body>
+    <div id="navbar"><a id="logo" href="/"><img src="assets/logo-tight.png"><span>izubee</span></a>
+      <ul>
+        <li><a href="docs.html">Guide</a></li>
+        <li><a href="try.html">Tools</a></li>
+        <li><a href="try/">Try</a></li>
+      </ul>
+    </div>
+    <div id="content">
+      <div id="docs">
+        <h1>Syntax</h1>
+        <table>
+          <tr>
+            <th>JS</th>
+            <th>Bizubee</th>
+          </tr>
+          <tr></tr>
+          <tr>
+            <td><code class="language-js">a <span class="token operator">&amp;&amp;</span> b</code>
+            </td>
+            <td><code class="language-bzb">a <span class="token keyword">and</span> b</code>
+            </td>
+          </tr>
+          <tr>
+            <td><code class="language-js">a <span class="token operator">||</span> b</code>
+            </td>
+            <td><code class="language-bzb">a <span class="token keyword">or</span> b</code>
+            </td>
+          </tr>
+          <tr>
+            <td><code class="language-js"><span class="token operator">!</span><span class="token punctuation">(</span>a <span class="token operator">&amp;&amp;</span> b<span class="token punctuation">)</span></code>
+            </td>
+            <td><code class="language-bzb"><span class="token keyword">not</span> a <span class="token keyword">and</span> b</code>
+            </td>
+          </tr>
+          <tr>
+            <td><code class="language-js"><span class="token operator">!</span>a <span class="token operator">||</span> <span class="token operator">!</span>b</code>
+            </td>
+            <td><code class="language-bzb"><span class="token operator">!</span>a <span class="token keyword">or</span> <span class="token operator">!</span>b</code>
+            </td>
+          </tr>
+          <tr>
+            <td><code class="language-js">a <span class="token operator">&lt;</span> b <span class="token operator">&amp;&amp;</span> b <span class="token operator">&lt;</span> c</code>
+            </td>
+            <td><code class="language-bzb">a <span class="token operator">&lt;</span> b <span class="token operator">&lt;</span> c</code>
+            </td>
+          </tr>
+          <tr>
+            <td><code class="language-js">a <span class="token operator">===</span> b</code>
+            </td>
+            <td><code class="language-bzb">a <span class="token operator">==</span> b</code>
+            </td>
+          </tr>
+          <tr>
+            <td><code class="language-js">a <span class="token operator">==</span> b</code>
+            </td>
+            <td>no equivalent</td>
+          </tr>
+          <tr>
+            <td><code class="language-js">a <span class="token operator">==</span> <span class="token keyword">null</span></code>
+            </td>
+            <td><code class="language-bzb">a<span class="token operator">?</span></code>
+            </td>
+          </tr>
+          <tr>
+            <td><code class="language-js"><span class="token punctuation">(</span>a <span class="token operator">==</span> undefined<span class="token punctuation">)</span><span class="token operator">?</span> undefined <span class="token punctuation">:</span> a<span class="token punctuation">.</span>b<span class="token punctuation">.</span>c</code>
+            </td>
+            <td><code class="language-bzb">a<span class="token operator">?</span><span class="token punctuation">.</span>b<span class="token punctuation">.</span>c</code>
+            </td>
+          </tr>
+          <tr>
+            <td><code class="language-js"><span class="token punctuation">(</span>func <span class="token operator">==</span> undefined<span class="token punctuation">)</span><span class="token operator">?</span> undefined <span class="token punctuation">:</span> <span class="token function">func</span><span class="token punctuation">(</span><span class="token punctuation">)</span></code>
+            </td>
+            <td><code class="language-bzb">func<span class="token operator">?</span><span class="token punctuation">(</span><span class="token punctuation">)</span></code>
+            </td>
+          </tr>
+          <tr>
+            <td><code class="language-js">Math<span class="token punctuation">.</span><span class="token function">pow</span><span class="token punctuation">(</span>a<span class="token punctuation">,</span> b<span class="token punctuation">)</span></code>
+            </td>
+            <td><code class="language-bzb">a <span class="token operator">^</span> b</code>
+            </td>
+          </tr>
+          <tr>
+            <td><code class="language-js">Math<span class="token punctuation">.</span><span class="token function">floor</span><span class="token punctuation">(</span>a <span class="token operator">/</span> b<span class="token punctuation">)</span></code>
+            </td>
+            <td><code class="language-bzb">a <span class="token operator">/</span><span class="token operator">/</span> b</code>
+            </td>
+          </tr>
+          <tr>
+            <td><code class="language-js"><span class="token keyword">return</span> a</code>
+            </td>
+            <td><code class="language-bzb"><span class="token keyword">return</span> a</code>, <code class="language-bzb"><span class="token operator">|</span><span class="token operator">&lt;</span> a</code> or <code class="language-bzb">a <span class="token operator">&gt;</span><span class="token operator">|</span></code>
+            </td>
+          </tr>
+          <tr>
+            <td><code class="language-js"><span class="token keyword">yield</span> a</code>
+            </td>
+            <td><code class="language-bzb"><span class="token keyword">yield</span> a</code>, <code class="language-bzb"><span class="token operator">&lt;</span><span class="token operator">&lt;</span> a</code> or <code class="language-bzb">a <span class="token operator">&gt;</span><span class="token operator">&gt;</span></code>
+            </td>
+          </tr>
+          <tr>
+            <td><code class="language-js"><span class="token keyword">yield</span><span class="token operator">*</span> a</code>
+            </td>
+            <td><code class="language-bzb"><span class="token keyword">yield</span> <span class="token operator">*</span> a</code>, <code class="language-bzb"><span class="token operator">&lt;</span><span class="token operator">&lt;</span> <span class="token operator">*</span> a</code> or <code class="language-bzb">a <span class="token operator">*</span> <span class="token operator">&gt;</span><span class="token operator">&gt;</span></code>
+            </td>
+          </tr>
+        </table>
+      </div>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,118 @@
+/*
+
+    Name:       seti
+    Author:     Michael Kaminsky (http://github.com/mkaminsky11)
+
+    Original seti color scheme by Jesse Weed (https://github.com/jesseweed/seti-syntax)
+
+*/
+.cm-s-bizubee.CodeMirror {
+  background-color: #f0f0f0 !important;
+  color: black !important;
+  border: none;
+  text-shadow: 1px 1px .06em black;
+  font-size: 12pt;
+}
+
+.cm-s-bizubee .CodeMirror-gutters {
+  color: black;
+  background-color: #f0f0f0;
+}
+
+.cm-s-bizubee .CodeMirror-cursor {
+  border-left: solid thin black;
+}
+
+.cm-s-bizubee .CodeMirror-linenumber {
+  color: #6D8A88;
+}
+
+.cm-s-bizubee.CodeMirror-focused div.CodeMirror-selected {
+  background: rgba(0, 0, 0, 0.1);
+}
+
+.cm-s-bizubee .CodeMirror-line::selection,
+.cm-s-bizubee .CodeMirror-line > span::selection,
+.cm-s-bizubee .CodeMirror-line > span > span::selection {
+  background: rgba(0, 0, 0, 0.1);
+}
+
+.cm-s-bizubee .CodeMirror-activeline-background {
+  background: #101213;
+}
+
+.cm-s-bizubee .CodeMirror-matchingbracket {
+  text-decoration: underline;
+  color: white !important;
+}
+
+.cm-s-bizubee span.cm-comment {
+  text-shadow: none;
+  color: #998066;
+}
+
+.cm-s-bizubee span.cm-string, .cm-s-bizubee span.cm-string-2 {
+  text-shadow: none;
+  color: gray;
+}
+
+.cm-s-bizubee span.cm-number {
+  text-shadow: none;
+  color: blue;
+}
+
+.cm-s-bizubee span.cm-variable {
+  color: black;
+}
+
+.cm-s-bizubee span.cm-variable-2 {
+  color: black;
+}
+
+.cm-s-bizubee span.cm-def {
+  color: black;
+}
+
+.cm-s-bizubee span.cm-keyword {
+  color: #689a10;
+}
+
+.cm-s-bizubee span.cm-operator {
+  color: red;
+}
+
+.cm-s-bizubee span.cm-keyword {
+  color: #689a10;
+}
+
+.cm-s-bizubee span.cm-atom {
+  color: blue;
+}
+
+.cm-s-bizubee span.cm-meta {
+  color: black;
+}
+
+.cm-s-bizubee span.cm-tag {
+  color: black;
+}
+
+.cm-s-bizubee span.cm-attribute {
+  color: red;
+}
+
+.cm-s-bizubee span.cm-qualifier {
+  color: red;
+}
+
+.cm-s-bizubee span.cm-property {
+  color: black;
+}
+
+.cm-s-bizubee span.cm-variable-3 {
+  color: red;
+}
+
+.cm-s-bizubee span.cm-builtin {
+  color: red;
+}

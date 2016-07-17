@@ -1,0 +1,133 @@
+@font-face {
+  font-family: "Beetype-Filled";
+  src: url("../assets/fonts/btf/Beetype-Filled.otf");
+}
+
+@font-face {
+  font-family: "Geometry-Soft-Pro";
+  src: url("../assets/fonts/gsp/Geometry_Soft_Pro-Bold_N.otf");
+}
+
+@font-face {
+  font-family: "Hex-Girlfriend";
+  src: url("../assets/fonts/hgf/HexGirlfriend.ttf");
+}
+
+@font-face {
+  font-family: Kelvetica;
+  src: url("../assets/fonts/kelvetica/Kelvetica.otf");
+}
+
+@font-face {
+  font-family: "Proza-Libre";
+  src: url("../assets/fonts/proza-libre/ProzaLibre-Medium.ttf");
+}
+
+.CodeMirror {
+  font-size: 22pt;
+}
+
+.no-edge, html, body, body #navbar, body #navbar * {
+  margin: 0px;
+  padding: 0px;
+  border: none;
+}
+
+html, body {
+  width: 100%;
+  height: 100%;
+  font-family: "Geometry-Soft-Pro";
+}
+
+body {
+  background-color: #f0f0f0;
+}
+
+body #navbar {
+  height: 100px;
+  width: 100%;
+  text-align: center;
+  padding-top: 50px;
+  padding-bottom: 50px;
+  line-height: 100px;
+  background-color: rgba(255, 255, 255, 0.9);
+  font-family: "Beetype-Filled";
+}
+
+body #navbar #logo {
+  height: 100px;
+  position: absolute;
+  display: inline-block;
+  left: 50px;
+  color: black;
+  text-decoration: none;
+}
+
+body #navbar #logo img {
+  height: 100%;
+}
+
+body #navbar #logo span {
+  font-size: 30px;
+}
+
+body #navbar ul {
+  display: inline-block;
+  font-size: 25px;
+  margin-left: 200px;
+  margin-right: 200px;
+  vertical-align: bottom;
+}
+
+body #navbar ul li {
+  display: inline-block;
+  height: 100%;
+  margin-left: 50px;
+  margin-right: 50px;
+}
+
+body #navbar ul li a {
+  line-height: 25px;
+  vertical-align: bottom;
+  color: black;
+}
+
+body #navbar ul li a:hover {
+  color: blue;
+}
+
+body #content #docs {
+  margin-right: auto;
+  margin-left: auto;
+  margin-bottom: 100px;
+  width: calc(100% - 400px);
+  font-size: 14pt;
+}
+
+body #content #docs p code {
+  background-color: white;
+  border: 2px solid white;
+  border-radius: 2px;
+  font-size: 12pt;
+}
+
+body #content #docs table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+body #content #docs table td, body #content #docs table th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 5px;
+  width: 50%;
+}
+
+body #content #docs code.language-js, body #content #docs code.language-bzb {
+  border-top-right-radius: 2px;
+  border-bottom-right-radius: 2px;
+  display: block;
+  background-color: white;
+  border: 10px solid white;
+  border-radius: 10px;
+}

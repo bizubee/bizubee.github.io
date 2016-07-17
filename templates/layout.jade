@@ -1,0 +1,19 @@
+doctype html
+html
+  head
+    title Bizubee
+    link(rel='stylesheet', href= 'css/style.css')
+    link(rel='stylesheet', href= 'assets/prism.css')
+    block styles
+    block scripts
+  body
+    #navbar
+      a#logo(href='/')
+        img(src='assets/logo-tight.png')
+        span izubee
+      ul
+        each link in nav
+          li
+            a(href=link.url)= link.title
+    #content
+      block content

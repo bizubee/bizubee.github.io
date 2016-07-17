@@ -1,0 +1,356 @@
+
+extends ./layout.jade
+
+mixin bzb(bzCode)
+	code.language-bzb #{utils.removeIndent(bzCode)}
+
+mixin js(jsCode)
+	code.language-js #{utils.removeIndent(jsCode)}
+
+
+block content
+	#docs
+		h2 Syntax
+
+		table
+			tr
+				th JS
+				th Bizubee
+			tr
+
+			tr
+				td #[+js("a && b")]
+				td #[+bzb("a and b")]
+			tr
+				td #[+js("a || b")]
+				td #[+bzb("a or b")]
+			tr
+				td #[+js("!(a && b)")]
+				td #[+bzb("not a and b")]
+			tr
+				td #[+js("!a || !b")]
+				td #[+bzb("!a or !b")]
+			tr
+				td #[+js("a < b && b < c")]
+				td #[+bzb("a < b < c")]
+			tr
+				td #[+js("a === b")]
+				td #[+bzb("a == b")]
+			tr
+				td #[+js("a == b")]
+				td no equivalent
+			tr
+				td #[+js("a == null")]
+				td #[+bzb("a?")]
+			tr
+				td #[+js("(a == undefined)? undefined : a.b.c")]
+				td #[+bzb("a?.b.c")]
+			tr
+				td #[+js("(func == undefined)? undefined : func()")]
+				td #[+bzb("func?()")]
+			tr
+				td #[+js("Math.pow(a, b)")]
+				td #[+bzb("a ^ b")]
+			tr
+				td #[+js("Math.floor(a / b)")]
+				td #[+bzb("a // b")]
+			tr
+				td #[+js("return a")]
+				td #[+bzb("return a")], #[+bzb("|< a")] or #[+bzb("a >|")]
+			tr
+				td #[+js("yield a")]
+				td #[+bzb("yield a")], #[+bzb("<< a")] or #[+bzb("a >>")]
+			tr
+				td #[+js("yield* a")]
+				td #[+bzb("yield * a")], #[+bzb("<< * a")] or #[+bzb("a * >>")]
+			tr
+				td #[+js("this.a")]
+				td #[+bzb("@a")] or #[+bzb("this.a")]
+		
+		h2 Line Breaks and Indentation
+		:marked
+			A line break in bizubee terminates a statement unless it ends in a strictly binary operator.
+
+
+			Bizubee also has optional indented blocks, such that 
+
+			```bzb
+
+			if 2 < 3 do
+				doSomething()
+			else
+				doSomethingElse()
+
+			```
+
+			Can also be written as
+
+			```bzb
+
+			if 2 < 3 {
+				doSomething()
+			} else {
+				doSomethingElse()
+			}
+
+			```
+
+			Keep in mind that indentation is ignored within curly blocks.
+
+
+		h2 Variables
+		:marked
+			All variables in Bizubee are block-scoped, as opposed to function scoped. Use `var` to declare variables, and `const` to declare constants.
+
+			```bzb
+
+			if 2 < 6 do
+				var a = 7
+			    const b = 6
+			    # a and b are defined here
+
+			    
+			# a and b are undefined out here
+
+			```
+
+
+		h2 For-loops
+		:marked
+			### For-In
+
+			For-in loops are used to loop over a collection of values, and compile directly to `for-of` loops in JavaScript. Any object that properly implements the [Iterable interface](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Iteration_protocols) can be iterated over with a for-in loop.
+
+			```bzb
+
+			# Arrays are iterables!
+			const values = [3, 5, 6]
+
+			for value in values do
+				console.log("value is ${i}")
+
+			# prints: 
+			# 3
+			# 5
+			# 6
+
+
+			```
+
+			### For-On Loops
+
+			For-on loops iterate over an Async Iterable, and can only exist within async functions. There is currently no JS analog to the for-on loop, but there may be [one](https://github.com/tc39/proposal-async-iteration) soon. For now Bizubee has adopted the interface described in the proposal. The only difference is `Symbol.asyncIterator` is replaced by `symbols.asyncIterator` from the `bizubee utils` library.
+
+			```bzb
+
+			import {symbols} from bizubee utils
+
+			const myAsyncIterable = {
+				i       : 0
+				values  : []
+
+				next() -> {
+					@i += 1
+					return Promise.resolve({
+						done: (@i == @values.length)
+						value: @values[@i - 1]
+					})
+				}
+				[symbols.asyncIterable]: () -> {
+					return this
+				}
+			}
+
+			# function must be async
+			myAsyncFunction() -> ~ {
+				for value on myAsyncIterable do
+					console.log(value)
+			}
+
+			myAsyncFunction()
+
+			# asynchronously prints:
+			# 7
+			# 4
+			# 9
+
+			```
+
+		h2 Functions
+		:marked
+			Bizubee has function expressions and function declarations. Similar to JS, function declarations are hoisted to the top of their scope.
+
+
+			```bzb
+
+
+			# divide is already defined
+			console.log(divide(6, 2))
+
+			# declare function divide
+			divide(numerator, denominator) -> {
+				|< numerator / denominator
+			}
+
+			```
+
+			Whereas
+
+
+			```bzb
+
+			# divide is not defined, so throws error
+			console.log(divide(6, 2))
+
+			const divide = (numerator, denominator) -> {
+				|< numerator / denominator
+			}
+
+			# divide is defined here
+			console.log(divide(6, 2))
+
+
+			```
+
+			Unlike JS, function declarations are constant, and cannot be reset.
+
+
+		h2 Function Modifiers
+		:marked
+			In has generator functions, async functions, and async-generator functions. Each of the three function types requires a specific modifier.
+
+			### Generator Functions
+
+			Generator functions are defined by a `*` modifier after the function arrow. Generator functions in Bizubee are compile directly to their JS counterparts. See [JS generator functions](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function*).
+
+			```bzb
+
+			range(start, end, step = 1) -> * {
+				var i = start
+				while i < end do
+					yield i
+					i += step
+			}
+
+			for i in range(0, 3) do
+				console.log(i)
+
+			# prints:
+			# 0
+			# 1
+			# 2
+
+			```
+
+			### Async Functions
+
+			Async functions are defined by adding a `~` after the function arrow. Async functions can contain `await` expressions, which take a Promise/A+ argument. When an `await` is encountered, function execution is paused until the promise is resolved. Once the promise is resolved, the `await` expression evaluates to the resolution value, and function execution continues. 
+
+			```bzb
+
+			# ordinary function that returns a promise
+			httpGet(uri) -> {
+				return new Promise((resolve, reject) => {
+					const xhr = new XMLHttpRequest()
+
+					xhr.onreadystatechange = () => {
+						if xhr.readyState == 4 do
+							if xhr.status == 200 do
+								# everything went great
+								resolve(xhr.responseText)
+							else
+								# oops
+								reject(new Error("Failed with status ${xhr.status}"))
+					}
+
+					xhr.open('GET', uri, true)
+					xhr.send()
+				})
+			}
+
+			# async function that returns a promise
+			fetchJSON(uri) -> ~ {
+				const text = await httpGet(uri) # await promise
+				return JSON.parse(text)
+			}
+
+			fetchJSON(uri).then((json) => {
+				doSomethingWithJSON(json)
+			})
+
+			```
+
+
+			### Async Generator Functions
+
+			Async generator functions are functions that implicitly return Async Generators which can be iterated over asynchronously with for-on loops. The `~*` or ``comet`` operator is used as the modifier for async generator functions. Async generator functions can contain both `await` expressions, and `yield` statements.
+
+			An async generator function to iterate over a stream of JSON objects.
+
+			```bzb
+
+			# ordinary function that returns a promise
+			httpGet(uri) -> {
+				return new Promise((resolve, reject) => {
+					const xhr = new XMLHttpRequest()
+
+					xhr.onreadystatechange = () => {
+						if xhr.readyState == 4 do
+							if xhr.status == 200 do
+								# everything went great
+								resolve(xhr.responseText)
+							else
+								# oops
+								reject(new Error("Failed with status ${xhr.status}"))
+					}
+
+					xhr.open('GET', uri, true)
+					xhr.send()
+				})
+			}
+
+			const urls = [
+				'http://some.domain/path/to/file1.json'
+				'http://some.domain/path/to/file2.json'
+				'http://some.domain/path/to/file42.json'
+			]
+
+			getJSONStream() -> ~* {
+				for url in urls do
+					const text = await httpGet(url)
+					yield JSON.parse(text)
+			}
+
+			useJSONStream() -> ~ {
+				for json on getJSONStream() do
+					doSomethingWithJSON(json)
+			}
+
+			# start running async function
+			useJSONStream()
+
+			```
+
+
+			### Fat Arrow vs Thin Arrow
+
+			Fat arrow functions are defined using `=>` instead of `->`. They are mostly analogous to fat-arrow functions in JavaScript, in that they do not have their own `this` value. Instead, `this` keeps the value of the parent scope in a fat-arrow function.
+
+			```bzb
+
+			const myObj = {
+				val: 55
+				myMethod() -> {
+					myFatArrowFunction() => {
+						# this == myObj!
+						return this.val
+					}
+
+					return 3 + myFatArrowFunction()
+				}
+			}
+
+			# prints 58
+			console.log(myObj.myMethod())
+
+			```

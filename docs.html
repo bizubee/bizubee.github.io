@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Bizubee</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="assets/prism.css">
+  </head>
+  <body>
+    <div id="navbar"><a id="logo" href="/"><img src="assets/logo-tight.png"><span>izubee</span></a>
+      <ul>
+        <li><a href="docs.html">Guide</a></li>
+        <li><a href="try.html">Tools</a></li>
+        <li><a href="try/">Try</a></li>
+      </ul>
+    </div>
+    <div id="content">
+      <div id="docs">
+        <h2>Syntax</h2>
+        <table>
+          <tr>
+            <th>JS</th>
+            <th>Bizubee</th>
+          </tr>
+          <tr></tr>
+          <tr>
+            <td><code class="language-js">a <span class="token operator">&amp;&amp;</span> b</code>
+            </td>
+            <td><code class="language-bzb">a <span class="token keyword">and</span> b</code>
+            </td>
+          </tr>
+          <tr>
+            <td><code class="language-js">a <span class="token operator">||</span> b</code>
+            </td>
+            <td><code class="language-bzb">a <span class="token keyword">or</span> b</code>
+            </td>
+          </tr>
+          <tr>
+            <td><code class="language-js"><span class="token operator">!</span><span class="token punctuation">(</span>a <span class="token operator">&amp;&amp;</span> b<span class="token punctuation">)</span></code>
+            </td>
+            <td><code class="language-bzb"><span class="token keyword">not</span> a <span class="token keyword">and</span> b</code>
+            </td>
+          </tr>
+          <tr>
+            <td><code class="language-js"><span class="token operator">!</span>a <span class="token operator">||</span> <span class="token operator">!</span>b</code>
+            </td>
+            <td><code class="language-bzb"><span class="token operator">!</span>a <span class="token keyword">or</span> <span class="token operator">!</span>b</code>
+            </td>
+          </tr>
+          <tr>
+            <td><code class="language-js">a <span class="token operator">&lt;</span> b <span class="token operator">&amp;&amp;</span> b <span class="token operator">&lt;</span> c</code>
+            </td>
+            <td><code class="language-bzb">a <span class="token operator">&lt;</span> b <span class="token operator">&lt;</span> c</code>
+            </td>
+          </tr>
+          <tr>
+            <td><code class="language-js">a <span class="token operator">===</span> b</code>
+            </td>
+            <td><code class="language-bzb">a <span class="token operator">==</span> b</code>
+            </td>
+          </tr>
+          <tr>
+            <td><code class="language-js">a <span class="token operator">==</span> b</code>
+            </td>
+            <td>no equivalent</td>
+          </tr>
+          <tr>
+            <td><code class="language-js">a <span class="token operator">==</span> <span class="token keyword">null</span></code>
+            </td>
+            <td><code class="language-bzb">a<span class="token operator">?</span></code>
+            </td>
+          </tr>
+          <tr>
+            <td><code class="language-js"><span class="token punctuation">(</span>a <span class="token operator">==</span> undefined<span class="token punctuation">)</span><span class="token operator">?</span> undefined <span class="token punctuation">:</span> a<span class="token punctuation">.</span>b<span class="token punctuation">.</span>c</code>
+            </td>
+            <td><code class="language-bzb">a<span class="token operator">?</span><span class="token punctuation">.</span>b<span class="token punctuation">.</span>c</code>
+            </td>
+          </tr>
+          <tr>
+            <td><code class="language-js"><span class="token punctuation">(</span>func <span class="token operator">==</span> undefined<span class="token punctuation">)</span><span class="token operator">?</span> undefined <span class="token punctuation">:</span> <span class="token function">func</span><span class="token punctuation">(</span><span class="token punctuation">)</span></code>
+            </td>
+            <td><code class="language-bzb">func<span class="token operator">?</span><span class="token punctuation">(</span><span class="token punctuation">)</span></code>
+            </td>
+          </tr>
+          <tr>
+            <td><code class="language-js">Math<span class="token punctuation">.</span><span class="token function">pow</span><span class="token punctuation">(</span>a<span class="token punctuation">,</span> b<span class="token punctuation">)</span></code>
+            </td>
+            <td><code class="language-bzb">a <span class="token operator">^</span> b</code>
+            </td>
+          </tr>
+          <tr>
+            <td><code class="language-js">Math<span class="token punctuation">.</span><span class="token function">floor</span><span class="token punctuation">(</span>a <span class="token operator">/</span> b<span class="token punctuation">)</span></code>
+            </td>
+            <td><code class="language-bzb">a <span class="token operator">/</span><span class="token operator">/</span> b</code>
+            </td>
+          </tr>
+          <tr>
+            <td><code class="language-js"><span class="token keyword">return</span> a</code>
+            </td>
+            <td><code class="language-bzb"><span class="token keyword">return</span> a</code>, <code class="language-bzb"><span class="token operator">|</span><span class="token operator">&lt;</span> a</code> or <code class="language-bzb">a <span class="token operator">&gt;</span><span class="token operator">|</span></code>
+            </td>
+          </tr>
+          <tr>
+            <td><code class="language-js"><span class="token keyword">yield</span> a</code>
+            </td>
+            <td><code class="language-bzb"><span class="token keyword">yield</span> a</code>, <code class="language-bzb"><span class="token operator">&lt;</span><span class="token operator">&lt;</span> a</code> or <code class="language-bzb">a <span class="token operator">&gt;</span><span class="token operator">&gt;</span></code>
+            </td>
+          </tr>
+          <tr>
+            <td><code class="language-js"><span class="token keyword">yield</span><span class="token operator">*</span> a</code>
+            </td>
+            <td><code class="language-bzb"><span class="token keyword">yield</span> <span class="token operator">*</span> a</code>, <code class="language-bzb"><span class="token operator">&lt;</span><span class="token operator">&lt;</span> <span class="token operator">*</span> a</code> or <code class="language-bzb">a <span class="token operator">*</span> <span class="token operator">&gt;</span><span class="token operator">&gt;</span></code>
+            </td>
+          </tr>
+          <tr>
+            <td><code class="language-js"><span class="token keyword">this</span><span class="token punctuation">.</span>a</code>
+            </td>
+            <td><code class="language-bzb"><span class="token class-member variable">@a</span></code> or <code class="language-bzb"><span class="token keyword">this</span><span class="token punctuation">.</span>a</code>
+            </td>
+          </tr>
+        </table>
+        <h2>Line Breaks and Indentation</h2><p>A line break in bizubee terminates a statement unless it ends in a strictly binary operator.</p>
+<p>Bizubee also has optional indented blocks, such that </p>
+<pre><code class="language-bzb">
+<span class="token keyword">if</span> <span class="token number">2</span> <span class="token operator">&lt;</span> <span class="token number">3</span> <span class="token keyword">do</span>
+    <span class="token function">doSomething</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token keyword">else</span>
+    <span class="token function">doSomethingElse</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+</code></pre>
+<p>Can also be written as</p>
+<pre><code class="language-bzb">
+<span class="token keyword">if</span> <span class="token number">2</span> <span class="token operator">&lt;</span> <span class="token number">3</span> <span class="token punctuation">{</span>
+    <span class="token function">doSomething</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
+    <span class="token function">doSomethingElse</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p>Keep in mind that indentation is ignored within curly blocks.</p>
+
+        <h2>Variables</h2><p>All variables in Bizubee are block-scoped, as opposed to function scoped. Use <code>var</code> to declare variables, and <code>const</code> to declare constants.</p>
+<pre><code class="language-bzb">
+<span class="token keyword">if</span> <span class="token number">2</span> <span class="token operator">&lt;</span> <span class="token number">6</span> <span class="token keyword">do</span>
+    <span class="token keyword">var</span> a <span class="token operator">=</span> <span class="token number">7</span>
+    <span class="token keyword">const</span> b <span class="token operator">=</span> <span class="token number">6</span>
+    <span class="token comment" spellcheck="true"># a and b are defined here</span>
+
+
+<span class="token comment" spellcheck="true"># a and b are undefined out here</span>
+</code></pre>
+
+        <h2>For-loops</h2><h3 id="for-in">For-In</h3>
+<p>For-in loops are used to loop over a collection of values, and compile directly to <code>for-of</code> loops in JavaScript. Any object that properly implements the <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Iteration_protocols">Iterable interface</a> can be iterated over with a for-in loop.</p>
+<pre><code class="language-bzb">
+<span class="token comment" spellcheck="true"># Arrays are iterables!</span>
+<span class="token keyword">const</span> values <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">5</span><span class="token punctuation">,</span> <span class="token number">6</span><span class="token punctuation">]</span>
+
+<span class="token keyword">for</span> value <span class="token keyword">in</span> values <span class="token keyword">do</span>
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">&quot;value is ${i}&quot;</span><span class="token punctuation">)</span>
+
+<span class="token comment" spellcheck="true"># prints: </span>
+<span class="token comment" spellcheck="true"># 3</span>
+<span class="token comment" spellcheck="true"># 5</span>
+<span class="token comment" spellcheck="true"># 6</span>
+</code></pre>
+<h3 id="for-on-loops">For-On Loops</h3>
+<p>For-on loops iterate over an Async Iterable, and can only exist within async functions. There is currently no JS analog to the for-on loop, but there may be <a href="https://github.com/tc39/proposal-async-iteration">one</a> soon. For now Bizubee has adopted the interface described in the proposal. The only difference is <code>Symbol.asyncIterator</code> is replaced by <code>symbols.asyncIterator</code> from the <code>bizubee utils</code> library.</p>
+<pre><code class="language-bzb">
+<span class="token keyword">import</span> <span class="token punctuation">{</span>symbols<span class="token punctuation">}</span> <span class="token keyword">from</span> bizubee utils
+
+<span class="token keyword">const</span> myAsyncIterable <span class="token operator">=</span> <span class="token punctuation">{</span>
+    <span class="token property">i</span>       <span class="token punctuation">:</span> <span class="token number">0</span>
+    <span class="token property">values</span>  <span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
+
+    <span class="token function">next</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">-</span><span class="token operator">&gt;</span> <span class="token punctuation">{</span>
+        <span class="token class-member variable">@i</span> <span class="token operator">+</span><span class="token operator">=</span> <span class="token number">1</span>
+        <span class="token keyword">return</span> Promise<span class="token punctuation">.</span><span class="token function">resolve</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+            <span class="token property">done</span><span class="token punctuation">:</span> <span class="token punctuation">(</span><span class="token class-member variable">@i</span> <span class="token operator">==</span> <span class="token class-member variable">@values</span><span class="token punctuation">.</span>length<span class="token punctuation">)</span>
+            <span class="token property">value</span><span class="token punctuation">:</span> <span class="token class-member variable">@values</span><span class="token punctuation">[</span><span class="token class-member variable">@i</span> <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">]</span>
+        <span class="token punctuation">}</span><span class="token punctuation">)</span>
+    <span class="token punctuation">}</span>
+    <span class="token punctuation">[</span>symbols<span class="token punctuation">.</span>asyncIterable<span class="token punctuation">]</span><span class="token punctuation">:</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">-</span><span class="token operator">&gt;</span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> <span class="token keyword">this</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+<span class="token comment" spellcheck="true"># function must be async</span>
+<span class="token function">myAsyncFunction</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">-</span><span class="token operator">&gt;</span> <span class="token operator">~</span> <span class="token punctuation">{</span>
+    <span class="token keyword">for</span> value <span class="token keyword">on</span> myAsyncIterable <span class="token keyword">do</span>
+        console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>value<span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+
+<span class="token function">myAsyncFunction</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+<span class="token comment" spellcheck="true"># asynchronously prints:</span>
+<span class="token comment" spellcheck="true"># 7</span>
+<span class="token comment" spellcheck="true"># 4</span>
+<span class="token comment" spellcheck="true"># 9</span>
+</code></pre>
+
+        <h2>Functions</h2><p>Bizubee has function expressions and function declarations. Similar to JS, function declarations are hoisted to the top of their scope.</p>
+<pre><code class="language-bzb">
+
+<span class="token comment" spellcheck="true"># divide is already defined</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token function">divide</span><span class="token punctuation">(</span><span class="token number">6</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+
+<span class="token comment" spellcheck="true"># declare function divide</span>
+<span class="token function">divide</span><span class="token punctuation">(</span>numerator<span class="token punctuation">,</span> denominator<span class="token punctuation">)</span> <span class="token operator">-</span><span class="token operator">&gt;</span> <span class="token punctuation">{</span>
+    <span class="token operator">|</span><span class="token operator">&lt;</span> numerator <span class="token operator">/</span> denominator
+<span class="token punctuation">}</span>
+</code></pre>
+<p>Whereas</p>
+<pre><code class="language-bzb">
+<span class="token comment" spellcheck="true"># divide is not defined, so throws error</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token function">divide</span><span class="token punctuation">(</span><span class="token number">6</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+
+<span class="token keyword">const</span> divide <span class="token operator">=</span> <span class="token punctuation">(</span>numerator<span class="token punctuation">,</span> denominator<span class="token punctuation">)</span> <span class="token operator">-</span><span class="token operator">&gt;</span> <span class="token punctuation">{</span>
+    <span class="token operator">|</span><span class="token operator">&lt;</span> numerator <span class="token operator">/</span> denominator
+<span class="token punctuation">}</span>
+
+<span class="token comment" spellcheck="true"># divide is defined here</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token function">divide</span><span class="token punctuation">(</span><span class="token number">6</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+</code></pre>
+<p>Unlike JS, function declarations are constant, and cannot be reset.</p>
+
+        <h2>Function Modifiers</h2><p>In has generator functions, async functions, and async-generator functions. Each of the three function types requires a specific modifier.</p>
+<h3 id="generator-functions">Generator Functions</h3>
+<p>Generator functions are defined by a <code>*</code> modifier after the function arrow. Generator functions in Bizubee are compile directly to their JS counterparts. See <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function*">JS generator functions</a>.</p>
+<pre><code class="language-bzb">
+<span class="token function">range</span><span class="token punctuation">(</span>start<span class="token punctuation">,</span> end<span class="token punctuation">,</span> step <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">)</span> <span class="token operator">-</span><span class="token operator">&gt;</span> <span class="token operator">*</span> <span class="token punctuation">{</span>
+    <span class="token keyword">var</span> i <span class="token operator">=</span> start
+    <span class="token keyword">while</span> i <span class="token operator">&lt;</span> end <span class="token keyword">do</span>
+        <span class="token keyword">yield</span> i
+        i <span class="token operator">+</span><span class="token operator">=</span> step
+<span class="token punctuation">}</span>
+
+<span class="token keyword">for</span> i <span class="token keyword">in</span> <span class="token function">range</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">)</span> <span class="token keyword">do</span>
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>i<span class="token punctuation">)</span>
+
+<span class="token comment" spellcheck="true"># prints:</span>
+<span class="token comment" spellcheck="true"># 0</span>
+<span class="token comment" spellcheck="true"># 1</span>
+<span class="token comment" spellcheck="true"># 2</span>
+</code></pre>
+<h3 id="async-functions">Async Functions</h3>
+<p>Async functions are defined by adding a <code>~</code> after the function arrow. Async functions can contain <code>await</code> expressions, which take a Promise/A+ argument. When an <code>await</code> is encountered, function execution is paused until the promise is resolved. Once the promise is resolved, the <code>await</code> expression evaluates to the resolution value, and function execution continues. </p>
+<pre><code class="language-bzb">
+<span class="token comment" spellcheck="true"># ordinary function that returns a promise</span>
+<span class="token function">httpGet</span><span class="token punctuation">(</span>uri<span class="token punctuation">)</span> <span class="token operator">-</span><span class="token operator">&gt;</span> <span class="token punctuation">{</span>
+    <span class="token keyword">return</span> <span class="token keyword">new</span> <span class="token class-name">Promise</span><span class="token punctuation">(</span><span class="token punctuation">(</span>resolve<span class="token punctuation">,</span> reject<span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">&gt;</span> <span class="token punctuation">{</span>
+        <span class="token keyword">const</span> xhr <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">XMLHttpRequest</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+        xhr<span class="token punctuation">.</span>onreadystatechange <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">&gt;</span> <span class="token punctuation">{</span>
+            <span class="token keyword">if</span> xhr<span class="token punctuation">.</span>readyState <span class="token operator">==</span> <span class="token number">4</span> <span class="token keyword">do</span>
+                <span class="token keyword">if</span> xhr<span class="token punctuation">.</span>status <span class="token operator">==</span> <span class="token number">200</span> <span class="token keyword">do</span>
+                    <span class="token comment" spellcheck="true"># everything went great</span>
+                    <span class="token function">resolve</span><span class="token punctuation">(</span>xhr<span class="token punctuation">.</span>responseText<span class="token punctuation">)</span>
+                <span class="token keyword">else</span>
+                    <span class="token comment" spellcheck="true"># oops</span>
+                    <span class="token function">reject</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">Error</span><span class="token punctuation">(</span><span class="token string">&quot;Failed with status ${xhr.status}&quot;</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+        <span class="token punctuation">}</span>
+
+        xhr<span class="token punctuation">.</span><span class="token function">open</span><span class="token punctuation">(</span><span class="token string">&apos;GET&apos;</span><span class="token punctuation">,</span> uri<span class="token punctuation">,</span> <span class="token boolean">true</span><span class="token punctuation">)</span>
+        xhr<span class="token punctuation">.</span><span class="token function">send</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token punctuation">}</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+
+<span class="token comment" spellcheck="true"># async function that returns a promise</span>
+<span class="token function">fetchJSON</span><span class="token punctuation">(</span>uri<span class="token punctuation">)</span> <span class="token operator">-</span><span class="token operator">&gt;</span> <span class="token operator">~</span> <span class="token punctuation">{</span>
+    <span class="token keyword">const</span> text <span class="token operator">=</span> <span class="token keyword">await</span> <span class="token function">httpGet</span><span class="token punctuation">(</span>uri<span class="token punctuation">)</span> <span class="token comment" spellcheck="true"># await promise</span>
+    <span class="token keyword">return</span> JSON<span class="token punctuation">.</span><span class="token function">parse</span><span class="token punctuation">(</span>text<span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+
+<span class="token function">fetchJSON</span><span class="token punctuation">(</span>uri<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token keyword">then</span><span class="token punctuation">(</span><span class="token punctuation">(</span>json<span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">&gt;</span> <span class="token punctuation">{</span>
+    <span class="token function">doSomethingWithJSON</span><span class="token punctuation">(</span>json<span class="token punctuation">)</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span>
+</code></pre>
+<h3 id="async-generator-functions">Async Generator Functions</h3>
+<p>Async generator functions are functions that implicitly return Async Generators which can be iterated over asynchronously with for-on loops. The <code>~*</code> or <code>comet</code> operator is used as the modifier for async generator functions. Async generator functions can contain both <code>await</code> expressions, and <code>yield</code> statements.</p>
+<p>An async generator function to iterate over a stream of JSON objects.</p>
+<pre><code class="language-bzb">
+<span class="token comment" spellcheck="true"># ordinary function that returns a promise</span>
+<span class="token function">httpGet</span><span class="token punctuation">(</span>uri<span class="token punctuation">)</span> <span class="token operator">-</span><span class="token operator">&gt;</span> <span class="token punctuation">{</span>
+    <span class="token keyword">return</span> <span class="token keyword">new</span> <span class="token class-name">Promise</span><span class="token punctuation">(</span><span class="token punctuation">(</span>resolve<span class="token punctuation">,</span> reject<span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">&gt;</span> <span class="token punctuation">{</span>
+        <span class="token keyword">const</span> xhr <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">XMLHttpRequest</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+        xhr<span class="token punctuation">.</span>onreadystatechange <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">&gt;</span> <span class="token punctuation">{</span>
+            <span class="token keyword">if</span> xhr<span class="token punctuation">.</span>readyState <span class="token operator">==</span> <span class="token number">4</span> <span class="token keyword">do</span>
+                <span class="token keyword">if</span> xhr<span class="token punctuation">.</span>status <span class="token operator">==</span> <span class="token number">200</span> <span class="token keyword">do</span>
+                    <span class="token comment" spellcheck="true"># everything went great</span>
+                    <span class="token function">resolve</span><span class="token punctuation">(</span>xhr<span class="token punctuation">.</span>responseText<span class="token punctuation">)</span>
+                <span class="token keyword">else</span>
+                    <span class="token comment" spellcheck="true"># oops</span>
+                    <span class="token function">reject</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">Error</span><span class="token punctuation">(</span><span class="token string">&quot;Failed with status ${xhr.status}&quot;</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+        <span class="token punctuation">}</span>
+
+        xhr<span class="token punctuation">.</span><span class="token function">open</span><span class="token punctuation">(</span><span class="token string">&apos;GET&apos;</span><span class="token punctuation">,</span> uri<span class="token punctuation">,</span> <span class="token boolean">true</span><span class="token punctuation">)</span>
+        xhr<span class="token punctuation">.</span><span class="token function">send</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token punctuation">}</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">const</span> urls <span class="token operator">=</span> <span class="token punctuation">[</span>
+    <span class="token string">&apos;http://some.domain/path/to/file1.json&apos;</span>
+    <span class="token string">&apos;http://some.domain/path/to/file2.json&apos;</span>
+    <span class="token string">&apos;http://some.domain/path/to/file42.json&apos;</span>
+<span class="token punctuation">]</span>
+
+<span class="token function">getJSONStream</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">-</span><span class="token operator">&gt;</span> <span class="token operator">~</span><span class="token operator">*</span> <span class="token punctuation">{</span>
+    <span class="token keyword">for</span> url <span class="token keyword">in</span> urls <span class="token keyword">do</span>
+        <span class="token keyword">const</span> text <span class="token operator">=</span> <span class="token keyword">await</span> <span class="token function">httpGet</span><span class="token punctuation">(</span>url<span class="token punctuation">)</span>
+        <span class="token keyword">yield</span> JSON<span class="token punctuation">.</span><span class="token function">parse</span><span class="token punctuation">(</span>text<span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+
+<span class="token function">useJSONStream</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">-</span><span class="token operator">&gt;</span> <span class="token operator">~</span> <span class="token punctuation">{</span>
+    <span class="token keyword">for</span> json <span class="token keyword">on</span> <span class="token function">getJSONStream</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">do</span>
+        <span class="token function">doSomethingWithJSON</span><span class="token punctuation">(</span>json<span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+
+<span class="token comment" spellcheck="true"># start running async function</span>
+<span class="token function">useJSONStream</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+</code></pre>
+<h3 id="fat-arrow-vs-thin-arrow">Fat Arrow vs Thin Arrow</h3>
+<p>Fat arrow functions are defined using <code>=&gt;</code> instead of <code>-&gt;</code>. They are mostly analogous to fat-arrow functions in JavaScript, in that they do not have their own <code>this</code> value. Instead, <code>this</code> keeps the value of the parent scope in a fat-arrow function.</p>
+<pre><code class="language-bzb">
+<span class="token keyword">const</span> myObj <span class="token operator">=</span> <span class="token punctuation">{</span>
+    <span class="token property">val</span><span class="token punctuation">:</span> <span class="token number">55</span>
+    <span class="token function">myMethod</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">-</span><span class="token operator">&gt;</span> <span class="token punctuation">{</span>
+        <span class="token function">myFatArrowFunction</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">&gt;</span> <span class="token punctuation">{</span>
+            <span class="token comment" spellcheck="true"># this == myObj!</span>
+            <span class="token keyword">return</span> <span class="token keyword">this</span><span class="token punctuation">.</span>val
+        <span class="token punctuation">}</span>
+
+        <span class="token keyword">return</span> <span class="token number">3</span> <span class="token operator">+</span> <span class="token function">myFatArrowFunction</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+<span class="token comment" spellcheck="true"># prints 58</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>myObj<span class="token punctuation">.</span><span class="token function">myMethod</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+</code></pre>
+
+      </div>
+    </div>
+  </body>
+</html>
