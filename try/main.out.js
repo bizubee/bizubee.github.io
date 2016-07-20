@@ -8671,17 +8671,26 @@ function compile() {
 	return rollup.rollup({
 		entry: 'main',
 		plugins: [bizubee(options)]
-	}).catch(e => {
-		console.log(e.stack);
 	}).then(bundle => {
-		return result = bundle.generate({});
+		result = bundle.generate({});
+		result.isError = false;
+		return result;
+	}, error => {
+		return {
+			code: '',
+			isError: true,
+			error
+		};
 	});
 }
 
 const actions = {
 	compile() {
 		return compile().then(result => {
-			jsEditor.setValue(result.code);
+			if (result.isError) {
+				console.log(result.error);
+			} else
+				jsEditor.setValue(result.code);
 		});
 	},
 	run() {
@@ -8695,6 +8704,7 @@ const actions = {
 let timeout;
 
 function onChange() {
+	jsEditor.setValue('');
 	if (timeout) {
 		window.clearTimeout(timeout);
 	}
@@ -8707,17 +8717,21 @@ window.onload = function(e) {
 		value: Cookies.get('code') || '',
 		mode: 'bizubee',
 		theme: 'bizubee',
-		lineNumbers: true
+		lineNumbers: true,
+		keyMap: 'sublime',
+		tabSize: 2,
+		autoCloseBrackets: true
 	});
 
 	bzEditor.on('change', onChange);
 
-	onChange();
-
 	jsEditor = CodeMirror(document.getElementById('js-editor'), {
 		mode: 'javascript',
-		theme: 'elegant'
+		theme: 'elegant',
+		tabSize: 2
 	});
+
+	onChange();
 
 	const query = document.querySelectorAll('#actions input[bind-to]');
 	for (var i = 0; i < query.length; i++) {

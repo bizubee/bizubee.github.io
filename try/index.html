@@ -5,8 +5,11 @@
         <script src="rollup.browser.js"></script>
         <script src="cookies.js"></script>
         <script src="cm/lib/codemirror.js"></script>
+        <script src="cm/addon/mode/simple.js"></script>
         <script src="cm/mode/javascript/javascript.js"></script>
+        <script src="cm/keymap/sublime.js"></script>
         <script src="bizubee-mode.js"></script>
+        <script src="cm/addon/edit/closebrackets.js"></script>
         <script src="main.out.js"></script>
         <link rel="stylesheet" href="cm/lib/codemirror.css" />
         <link rel="stylesheet" href="cm/theme/elegant.css" />
@@ -27,13 +30,14 @@
 
 			body {
 				overflow: hidden;
+				background-color: black;
 			}
 			
 			#bz-editor, #js-editor {
 				position: relative;
 				height: 100%;
 				display: inline-block;
-				width: 49%;
+				width: 49.5%;
 			}
 
 			#actions {
@@ -63,7 +67,9 @@
 			}
 
 			#content {
-				height: calc(100% - 100px);
+				height: calc(100% - 140px);
+				background-color: white;
+				width: 100%;
 			}
 
 			#navbar {
@@ -104,12 +110,12 @@
 			<a href="../" id="logo-container">
 				<img src="../assets/logo-tight.png" />
 			</a>
+			<ul id="actions">
+				<li><input type="button" bind-to="run" value="&#9658;" /></li>
+			</ul>
 		</div>
 		<div id="content">
 			<div id="bz-editor">
-				<ul id="actions">
-					<li><input type="button" bind-to="run" value="&#9658;" /></li>
-				</ul>
 			</div>
 			<div id="js-editor">
 			</div>

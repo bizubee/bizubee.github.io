@@ -11,7 +11,6 @@
   color: black !important;
   border: none;
   text-shadow: 1px 1px .06em black;
-  font-size: 12pt;
 }
 
 .cm-s-bizubee .CodeMirror-gutters {
@@ -44,6 +43,10 @@
 .cm-s-bizubee .CodeMirror-matchingbracket {
   text-decoration: underline;
   color: white !important;
+}
+
+.cm-s-bizubee span {
+  color: #3f3f3f;
 }
 
 .cm-s-bizubee span.cm-comment {

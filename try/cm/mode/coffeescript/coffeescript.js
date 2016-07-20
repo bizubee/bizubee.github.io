@@ -335,7 +335,11 @@ CodeMirror.defineMode("coffeescript", function(conf, parserConf) {
       if (state.tokenize != tokenBase) return 0;
       var scope = state.scope;
       var closer = text && "])}".indexOf(text.charAt(0)) > -1;
-      if (closer) while (scope.type == "coffee" && scope.prev) scope = scope.prev;
+      if (closer) {
+        while (scope.type == "coffee" && scope.prev)
+          scope = scope.prev;
+        state.dedent = true;
+      }
       var closes = closer && scope.type === text.charAt(0);
       if (scope.align)
         return scope.alignOffset - (closes ? 1 : 0);
