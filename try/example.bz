@@ -1,18 +1,24 @@
 
+# Here is some Bizubee to mess around with!
+
 import {EventObservable as Stream} from observation
 
 const ticker = new Stream(ctrl)
 
+# our stream controller
 ctrl(send, close) => {
 	var
   ,	i = 0
   ,	interval = window.setInterval(tick, 1000)
     
   tick() => {
+    # run 20 times
     if i < 20 do
+      # keep sending
       send(i)
       i += 1
     else
+      # we are done!
       window.clearInterval(interval)
       close()
   }

@@ -26,7 +26,7 @@ Metalsmith(__dirname)
       },
       {
         title: 'Tools',
-        url: 'try.html'
+        url: 'tools.html'
       },
       {
         title: 'Try',
