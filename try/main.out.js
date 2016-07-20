@@ -8621,6 +8621,27 @@ function bizubee(options = {}) {
 	}
 }
 
+function fetchText(uri) {
+	return new Promise((win, fail) => {
+		const xhr = new XMLHttpRequest();
+
+		xhr.onreadystatechange = () => {
+			if (xhr.readyState === 4) {
+				if (xhr.status === 200) {
+					win(xhr.responseText);
+				} else {
+					fail(new Error(
+						`Request failed with status ${xhr.status}`
+						));
+				}
+			}
+		}
+
+		xhr.open('GET', uri, true);
+		xhr.send();
+	});
+}
+
 var bzEditor;
 var jsEditor;
 const moduleCache = new Map();
@@ -8641,25 +8662,11 @@ const options = {
 				} else {
 					if (moduleCache.has(id)) {
 						return {code: moduleCache.get(id)};
-					} else return new Promise((win, fail) => {
-						const xhr = new XMLHttpRequest();
-
-						xhr.onreadystatechange = () => {
-							if (xhr.readyState === 4) {
-								if (xhr.status === 200) {
-									const code = xhr.responseText;
-									moduleCache.set(id, code);
-									win({code});
-								} else {
-									fail(new Error(
-										`Request failed with status ${xhr.status}`
-										));
-								}
-							}
-						}
-
-						xhr.open('GET', `modules/${id}`, true);
-						xhr.send();
+					} else return fetchText(`modules/${id}`).then(code => {
+						moduleCache.set(id, code);
+						return {code};
+					}, err => {
+						throw new Error("Couldn't fetch!");
 					});
 				}
 			}
@@ -8688,7 +8695,7 @@ const actions = {
 	compile() {
 		return compile().then(result => {
 			if (result.isError) {
-				console.log(result.error);
+				throw result.error;
 			} else
 				jsEditor.setValue(result.code);
 		});
@@ -8724,6 +8731,13 @@ window.onload = function(e) {
 	});
 
 	bzEditor.on('change', onChange);
+
+	if (!Cookies.get('code')) {
+		fetchText('example.bz').then(code => {
+			bzEditor.setValue(code);
+			onChange();
+		});
+	}
 
 	jsEditor = CodeMirror(document.getElementById('js-editor'), {
 		mode: 'javascript',
