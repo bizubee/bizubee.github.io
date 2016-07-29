@@ -15,6 +15,7 @@
     </div>
     <div id="content">
       <div id="docs">
+        <h1>Guide</h1>
         <h2>Syntax</h2>
         <table>
           <tr>
@@ -114,7 +115,7 @@
           <tr>
             <td><code class="language-js"><span class="token keyword">this</span><span class="token punctuation">.</span>a</code>
             </td>
-            <td><code class="language-bzb"><span class="token class-member variable">@a</span></code> or <code class="language-bzb"><span class="token keyword">this</span><span class="token punctuation">.</span>a</code>
+            <td><code class="language-bzb"><span class="token class-member variable">@a</span></code> or <code class="language-bzb"><span class="token symbol">this</span><span class="token punctuation">.</span>a</code>
             </td>
           </tr>
         </table>
@@ -178,7 +179,7 @@
         <span class="token punctuation">}</span><span class="token punctuation">)</span>
     <span class="token punctuation">}</span>
     <span class="token punctuation">[</span>symbols<span class="token punctuation">.</span>asyncIterable<span class="token punctuation">]</span><span class="token punctuation">:</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">-</span><span class="token operator">&gt;</span> <span class="token punctuation">{</span>
-        <span class="token keyword">return</span> <span class="token keyword">this</span>
+        <span class="token keyword">return</span> <span class="token symbol">this</span>
     <span class="token punctuation">}</span>
 <span class="token punctuation">}</span>
 
@@ -245,6 +246,8 @@ console<span class="token punctuation">.</span><span class="token function">log<
 <pre><code class="language-bzb">
 <span class="token comment" spellcheck="true"># ordinary function that returns a promise</span>
 <span class="token function">httpGet</span><span class="token punctuation">(</span>uri<span class="token punctuation">)</span> <span class="token operator">-</span><span class="token operator">&gt;</span> <span class="token punctuation">{</span>
+    <span class="token keyword">const</span> base <span class="token operator">=</span> <span class="token string">&quot;Failed with status&quot;</span>
+
     <span class="token keyword">return</span> <span class="token keyword">new</span> <span class="token class-name">Promise</span><span class="token punctuation">(</span><span class="token punctuation">(</span>resolve<span class="token punctuation">,</span> reject<span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">&gt;</span> <span class="token punctuation">{</span>
         <span class="token keyword">const</span> xhr <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">XMLHttpRequest</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
 
@@ -255,7 +258,7 @@ console<span class="token punctuation">.</span><span class="token function">log<
                     <span class="token function">resolve</span><span class="token punctuation">(</span>xhr<span class="token punctuation">.</span>responseText<span class="token punctuation">)</span>
                 <span class="token keyword">else</span>
                     <span class="token comment" spellcheck="true"># oops</span>
-                    <span class="token function">reject</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">Error</span><span class="token punctuation">(</span><span class="token string">&quot;Failed with status ${xhr.status}&quot;</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+                    <span class="token function">reject</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">Error</span><span class="token punctuation">(</span><span class="token string">&quot;${base} ${xhr.status}&quot;</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
         <span class="token punctuation">}</span>
 
         xhr<span class="token punctuation">.</span><span class="token function">open</span><span class="token punctuation">(</span><span class="token string">&apos;GET&apos;</span><span class="token punctuation">,</span> uri<span class="token punctuation">,</span> <span class="token boolean">true</span><span class="token punctuation">)</span>
@@ -279,6 +282,8 @@ console<span class="token punctuation">.</span><span class="token function">log<
 <pre><code class="language-bzb">
 <span class="token comment" spellcheck="true"># ordinary function that returns a promise</span>
 <span class="token function">httpGet</span><span class="token punctuation">(</span>uri<span class="token punctuation">)</span> <span class="token operator">-</span><span class="token operator">&gt;</span> <span class="token punctuation">{</span>
+    <span class="token keyword">const</span> base <span class="token operator">=</span> <span class="token string">&quot;Failed with status&quot;</span>
+
     <span class="token keyword">return</span> <span class="token keyword">new</span> <span class="token class-name">Promise</span><span class="token punctuation">(</span><span class="token punctuation">(</span>resolve<span class="token punctuation">,</span> reject<span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">&gt;</span> <span class="token punctuation">{</span>
         <span class="token keyword">const</span> xhr <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">XMLHttpRequest</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
 
@@ -289,7 +294,7 @@ console<span class="token punctuation">.</span><span class="token function">log<
                     <span class="token function">resolve</span><span class="token punctuation">(</span>xhr<span class="token punctuation">.</span>responseText<span class="token punctuation">)</span>
                 <span class="token keyword">else</span>
                     <span class="token comment" spellcheck="true"># oops</span>
-                    <span class="token function">reject</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">Error</span><span class="token punctuation">(</span><span class="token string">&quot;Failed with status ${xhr.status}&quot;</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+                    <span class="token function">reject</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">Error</span><span class="token punctuation">(</span><span class="token string">&quot;${base} ${xhr.status}&quot;</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
         <span class="token punctuation">}</span>
 
         xhr<span class="token punctuation">.</span><span class="token function">open</span><span class="token punctuation">(</span><span class="token string">&apos;GET&apos;</span><span class="token punctuation">,</span> uri<span class="token punctuation">,</span> <span class="token boolean">true</span><span class="token punctuation">)</span>
@@ -325,7 +330,7 @@ console<span class="token punctuation">.</span><span class="token function">log<
     <span class="token function">myMethod</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">-</span><span class="token operator">&gt;</span> <span class="token punctuation">{</span>
         <span class="token function">myFatArrowFunction</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">&gt;</span> <span class="token punctuation">{</span>
             <span class="token comment" spellcheck="true"># this == myObj!</span>
-            <span class="token keyword">return</span> <span class="token keyword">this</span><span class="token punctuation">.</span>val
+            <span class="token keyword">return</span> <span class="token symbol">this</span><span class="token punctuation">.</span>val
         <span class="token punctuation">}</span>
 
         <span class="token keyword">return</span> <span class="token number">3</span> <span class="token operator">+</span> <span class="token function">myFatArrowFunction</span><span class="token punctuation">(</span><span class="token punctuation">)</span>

@@ -25,6 +25,7 @@ function fetchText(uri) {
 var bzEditor, jsEditor;
 
 const moduleCache = new Map();
+var model;
 
 const options = {
 	getResolver() {
@@ -71,13 +72,15 @@ function compile() {
 	});
 }
 
-const actions = {
+const methods = {
 	compile() {
 		return compile().then(result => {
 			if (result.isError) {
+				//model.building = false;
 				throw result.error;
 			} else
-				jsEditor.setValue(result.code);
+				model.building = true;
+				model.js = result.code;
 		});
 	},
 	run() {
@@ -91,12 +94,13 @@ const actions = {
 let timeout;
 
 function onChange() {
-	jsEditor.setValue('');
+	model.js = '';
+	model.building = false;
 	if (timeout) {
 		window.clearTimeout(timeout);
 	}
 
-	timeout = window.setTimeout(actions.compile, 1000);
+	timeout = window.setTimeout(methods.compile, 1000);
 }
 
 window.onload = function(e) {
@@ -125,13 +129,21 @@ window.onload = function(e) {
 		tabSize: 2
 	});
 
-	onChange();
 
-	const query = document.querySelectorAll('#actions input[bind-to]');
-	for (var i = 0; i < query.length; i++) {
-		const action = query[i].getAttribute('bind-to');
-		query[i].onclick = actions[action];
-	}
+	model = new Vue({
+		el: '#app',
+		data: {
+			building: true,
+			js: ''
+		},
+		methods
+	});
+
+	model.$watch('js', (val) => {
+		jsEditor.setValue(val);
+	});
+
+	onChange();
 }
 
 window.onbeforeunload = function() {

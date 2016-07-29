@@ -11,6 +11,9 @@ var comment = /#(?!\{).+/,
 
 Prism.languages.bizubee = Prism.languages.extend('javascript', {
   'comment': comment,
+  'symbol': /\b(this)\b/,
+  'boolean': /\b(true|false)\b/,
+  'constant': /\b(undefined|null|Infinity)\b/,
   'string': [
 
     // Strings are multiline
@@ -28,7 +31,7 @@ Prism.languages.bizubee = Prism.languages.extend('javascript', {
       }
     }
   ],
-  'keyword': /\b(var|const|import|from|as|and|break|catch|class|continue|delete|do|else|extends|finally|for|if|in|is|isnt|new|not|on|or|return|super|switch|then|this|throw|try|while|await|yield)\b/,
+  'keyword': /\b(var|const|import|from|as|and|break|catch|class|continue|delete|do|else|extends|finally|for|if|in|is|isnt|new|not|on|or|return|super|switch|then|throw|try|while|await|yield)\b/,
   'class-member': {
     pattern: /@(?!\d)\w+/,
     alias: 'variable'

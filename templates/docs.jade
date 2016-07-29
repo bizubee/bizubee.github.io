@@ -10,6 +10,8 @@ mixin js(jsCode)
 
 block content
 	#docs
+		h1 Guide
+	
 		h2 Syntax
 
 		table
@@ -250,6 +252,8 @@ block content
 
 			# ordinary function that returns a promise
 			httpGet(uri) -> {
+				const base = "Failed with status"
+				
 				return new Promise((resolve, reject) => {
 					const xhr = new XMLHttpRequest()
 
@@ -260,7 +264,7 @@ block content
 								resolve(xhr.responseText)
 							else
 								# oops
-								reject(new Error("Failed with status ${xhr.status}"))
+								reject(new Error("${base} ${xhr.status}"))
 					}
 
 					xhr.open('GET', uri, true)
@@ -291,6 +295,8 @@ block content
 
 			# ordinary function that returns a promise
 			httpGet(uri) -> {
+				const base = "Failed with status"
+
 				return new Promise((resolve, reject) => {
 					const xhr = new XMLHttpRequest()
 
@@ -301,7 +307,7 @@ block content
 								resolve(xhr.responseText)
 							else
 								# oops
-								reject(new Error("Failed with status ${xhr.status}"))
+								reject(new Error("${base} ${xhr.status}"))
 					}
 
 					xhr.open('GET', uri, true)

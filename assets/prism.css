@@ -80,9 +80,12 @@ pre[class*="language-"] {
 .token.tag,
 .token.boolean,
 .token.number,
-.token.constant,
-.token.symbol {
+.token.constant {
 	text-shadow: none;
+	color: blue;
+}
+
+.token.symbol {
 	color: blue;
 }
 
