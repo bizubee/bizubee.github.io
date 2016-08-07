@@ -8,6 +8,7 @@ var define      = require("metalsmith-define");
 var sass        = require('metalsmith-sass');
 var assets      = require('metalsmith-assets');
 var prism       = require('metalsmith-prism');
+var convert     = require('metalsmith-convert');
 
 require('./bizubee-highlighter');
 
@@ -66,6 +67,16 @@ Metalsmith(__dirname)
   .use(assets({
     source: './src/assets',
     destination: './assets'
+  }))
+  .use(convert({
+    src: '**/bullet.*.png',
+    target: 'png',
+    quality: 100,
+    resizeStyle: 'fill',
+    resize: {
+      width: 10,
+      height: 10
+    }
   }))
   .use(sass({
     outputStyle: "expanded",
