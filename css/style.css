@@ -59,6 +59,7 @@ body {
 }
 
 body #navbar {
+  position: relative;
   height: 100px;
   width: 100%;
   text-align: center;
@@ -67,6 +68,16 @@ body #navbar {
   line-height: 100px;
   background-color: rgba(0, 0, 0, 0.8);
   font-family: "Beetype-Filled";
+}
+
+body #navbar a#github {
+  position: absolute;
+  right: 0px;
+  top: 0px;
+}
+
+body #navbar a#github img {
+  height: 100px;
 }
 
 body #navbar #logo {

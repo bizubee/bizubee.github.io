@@ -20,6 +20,10 @@ Metalsmith(__dirname)
   .source("src")
   .metadata({
     logo: '/images/logo.png',
+    github: {
+      link: 'https://github.com/bizubee',
+      logo: 'assets/github.png'
+    },
     nav: [
       {
         title: 'Guide',
