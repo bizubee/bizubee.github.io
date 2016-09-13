@@ -8731,7 +8731,8 @@ window.onload = function(e) {
 		lineNumbers: true,
 		keyMap: 'sublime',
 		tabSize: 2,
-		autoCloseBrackets: true
+		autoCloseBrackets: true,
+		scrollbarStyle: "null"
 	});
 
 	bzEditor.on('change', onChange);
@@ -8745,8 +8746,11 @@ window.onload = function(e) {
 
 	jsEditor = CodeMirror(document.getElementById('js-editor'), {
 		mode: 'javascript',
-		theme: 'elegant',
-		tabSize: 2
+		theme: 'railscasts',
+		//lineNumbers: true,
+		tabSize: 2,
+		readOnly: true,
+		scrollbarStyle: "null"
 	});
 
 

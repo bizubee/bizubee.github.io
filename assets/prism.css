@@ -9,9 +9,8 @@ code[class*="language-"],
 pre[class*="language-"] {
 	color: black;
 	background: none;
-	font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
+	font-family: monospace;
 	text-align: left;
-	text-shadow: 1px 1px .06em black;
 	white-space: pre;
 	word-spacing: normal;
 	word-break: normal;
@@ -86,17 +85,20 @@ pre[class*="language-"] {
 }
 
 .token.symbol {
+	font-weight: bolder;
 	color: blue;
 }
 
 .token.selector,
 .token.attr-name,
-.token.string,
 .token.char,
 .token.builtin,
 .token.inserted {
-	text-shadow: none;
 	color: #689a10;
+}
+
+.token.string {
+	color: #689a10;	
 }
 
 .token.operator,
@@ -104,13 +106,15 @@ pre[class*="language-"] {
 .token.url,
 .language-css .token.string,
 .style .token.string {
+	font-weight: bolder;
 	color: red;
 }
 
 .token.atrule,
 .token.attr-value,
 .token.keyword {
-	color: #689a10;
+	font-weight: bolder;
+	color: green;
 }
 
 .token.regex,

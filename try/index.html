@@ -13,7 +13,7 @@
         <script src="vue.min.js"></script>
         <script src="main.out.js"></script>
         <link rel="stylesheet" href="cm/lib/codemirror.css" />
-        <link rel="stylesheet" href="cm/theme/elegant.css" />
+        <link rel="stylesheet" href="cm/theme/railscasts.css" />
         <link rel="stylesheet" href="../css/bizubee-theme.css" />
 
     	<style type="text/css" media="screen">
@@ -35,12 +35,14 @@
 			}
 			
 			#bz-editor, #js-editor {
-				position: relative;
-				height: 100%;
-				display: inline-block;
-				width: 49.5%;
+				position: absolute;
+				height: calc(100% - 120px);
+				width: 50%;
+				bottom: 0px;
 			}
 
+			#bz-editor { left: 0px;}
+			#js-editor { right: 0px;}
 
 			input[type=button] {
 				display: inline-block;

@@ -6,11 +6,18 @@
     Original seti color scheme by Jesse Weed (https://github.com/jesseweed/seti-syntax)
 
 */
+.shadow {
+  text-shadow: 0.5px 0.5px .02em black;
+}
+
+.bold, .cm-s-bizubee span.cm-keyword, .cm-s-bizubee span.cm-operator {
+  font-weight: bold;
+}
+
 .cm-s-bizubee.CodeMirror {
-  background-color: #f0f0f0 !important;
+  background-color: #fff !important;
   color: black !important;
   border: none;
-  text-shadow: 1px 1px .06em black;
 }
 
 .cm-s-bizubee .CodeMirror-gutters {
@@ -50,17 +57,14 @@
 }
 
 .cm-s-bizubee span.cm-comment {
-  text-shadow: none;
   color: #998066;
 }
 
 .cm-s-bizubee span.cm-string, .cm-s-bizubee span.cm-string-2 {
-  text-shadow: none;
-  color: gray;
+  color: #689a10;
 }
 
 .cm-s-bizubee span.cm-number {
-  text-shadow: none;
   color: blue;
 }
 
@@ -77,15 +81,11 @@
 }
 
 .cm-s-bizubee span.cm-keyword {
-  color: #689a10;
+  color: green;
 }
 
 .cm-s-bizubee span.cm-operator {
   color: red;
-}
-
-.cm-s-bizubee span.cm-keyword {
-  color: #689a10;
 }
 
 .cm-s-bizubee span.cm-atom {
